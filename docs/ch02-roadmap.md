@@ -9,13 +9,13 @@
 ## 2.1 A k-Armed Bandit Problem (pp. 25–26)
 
 **Setup**:
-- $k$ actions, each with an unknown expected reward $q_*(a) = \mathbb{E}[R_t \mid A_t = a]$
+- $k$ actions, each with an unknown expected reward $q_{\ast}(a) = \mathbb{E}[R_t \mid A_t = a]$
 - Agent forms estimates $Q_t(a)$ and must balance exploring unknown actions vs. exploiting the current best
 - **Greedy** actions: $A_t = \arg\max_a Q_t(a)$
 
 **Learning outcomes**:
 - Define the k-armed bandit problem and its components (actions, rewards, values)
-- Distinguish between action *value* $q_*(a)$ and action-value *estimate* $Q_t(a)$
+- Distinguish between action *value* $q_{\ast}(a)$ and action-value *estimate* $Q_t(a)$
 - Articulate the explore/exploit dilemma: why neither pure strategy works
 
 ---
@@ -39,18 +39,18 @@
 
 **Experimental setup**:
 - 2000 randomly generated 10-armed bandit problems
-- True values $q_*(a) \sim \mathcal{N}(0, 1)$; rewards $\sim \mathcal{N}(q_*(a), 1)$
+- True values $q_{\ast}(a) \sim \mathcal{N}(0, 1)$; rewards $\sim \mathcal{N}(q_{\ast}(a), 1)$
 - Compared: greedy ($\varepsilon = 0$), $\varepsilon = 0.01$, $\varepsilon = 0.1$ over 1000 steps
 
 **Figures**:
 
-*Figure 2.1 — Violin plot of a single 10-armed testbed instance showing $q_*(a)$ distributions:*
+*Figure 2.1 — Violin plot of a single 10-armed testbed instance showing $q_{\ast}(a)$ distributions:*
 
-![Figure 2.1](../docs/figures/ch02/fig2.1-10armed-testbed.png)
+![Figure 2.1](figures/ch02/fig2.1-10armed-testbed.png)
 
 *Figure 2.2 — Two-panel: average reward and % optimal action over 1000 steps:*
 
-![Figure 2.2](../docs/figures/ch02/fig2.2-epsilon-greedy-performance.png)
+![Figure 2.2](figures/ch02/fig2.2-epsilon-greedy-performance.png)
 
 **Key results**:
 - Greedy improves faster initially but plateaus at $\sim 1.0$ (gets stuck)
@@ -120,7 +120,7 @@ $$\sum_{n=1}^{\infty} \alpha_n = \infty \qquad \text{and} \qquad \sum_{n=1}^{\in
 
 *Figure 2.3 — Optimistic greedy ($Q_0=5$, $\varepsilon=0$) vs. realistic $\varepsilon$-greedy ($Q_0=0$, $\varepsilon=0.1$):*
 
-![Figure 2.3](../docs/figures/ch02/fig2.3-optimistic-initial-values.png)
+![Figure 2.3](figures/ch02/fig2.3-optimistic-initial-values.png)
 
 **Learning outcomes**:
 - Explain the mechanism: high initial values $\to$ disappointment $\to$ forced exploration
@@ -142,7 +142,7 @@ $$A_t = \arg\max_a \left[ Q_t(a) + c\sqrt{\frac{\ln t}{N_t(a)}} \right]$$
 
 *Figure 2.4 — UCB ($c=2$) vs. $\varepsilon$-greedy ($\varepsilon=0.1$):*
 
-![Figure 2.4](../docs/figures/ch02/fig2.4-ucb-performance.png)
+![Figure 2.4](figures/ch02/fig2.4-ucb-performance.png)
 
 **Learning outcomes**:
 - Parse the UCB formula: exploitation term ($Q$) + exploration term (uncertainty bonus)
@@ -170,7 +170,7 @@ $$H_{t+1}(a) = H_t(a) - \alpha(R_t - \bar{R}_t)\pi_t(a) \qquad \text{(all other 
 
 *Figure 2.5 — % optimal action for gradient bandit: with/without baseline, $\alpha=0.1$ vs. $\alpha=0.4$:*
 
-![Figure 2.5](../docs/figures/ch02/fig2.5-gradient-bandit.png)
+![Figure 2.5](figures/ch02/fig2.5-gradient-bandit.png)
 
 **Textbook note**: Section includes a proof (pp. 38–40) that this update is stochastic gradient ascent on $\mathbb{E}[R_t]$.
 
@@ -205,7 +205,7 @@ $$H_{t+1}(a) = H_t(a) - \alpha(R_t - \bar{R}_t)\pi_t(a) \qquad \text{(all other 
 
 *Figure 2.6 — Parameter study across all chapter methods:*
 
-![Figure 2.6](../docs/figures/ch02/fig2.6-parameter-study.png)
+![Figure 2.6](figures/ch02/fig2.6-parameter-study.png)
 
 **Methods compared**: $\varepsilon$-greedy, gradient bandit, UCB, optimistic greedy
 
