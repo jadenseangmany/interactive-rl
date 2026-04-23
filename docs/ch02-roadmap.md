@@ -15,7 +15,7 @@
 
 **Learning outcomes**:
 - Define the k-armed bandit problem and its components (actions, rewards, values)
-- Distinguish between action *value* $q_{\ast}(a)$ and action-value *estimate* $Q_t(a)$
+- Distinguish between action **value** $q_{\ast}(a)$ and action-value **estimate** $Q_t(a)$
 - Articulate the explore/exploit dilemma: why neither pure strategy works
 
 ---
@@ -44,11 +44,11 @@
 
 **Figures**:
 
-*Figure 2.1 — Violin plot of a single 10-armed testbed instance showing $q_{\ast}(a)$ distributions:*
+**Figure 2.1** — Violin plot of a single 10-armed testbed instance showing $q_{\ast}(a)$ distributions:
 
 ![Figure 2.1](figures/ch02/fig2.1-10armed-testbed.png)
 
-*Figure 2.2 — Two-panel: average reward and % optimal action over 1000 steps:*
+**Figure 2.2** — Two-panel: average reward and % optimal action over 1000 steps:
 
 ![Figure 2.2](figures/ch02/fig2.2-epsilon-greedy-performance.png)
 
@@ -73,7 +73,7 @@
 $$Q_{n+1} = Q_n + \frac{1}{n}\big[R_n - Q_n\big]$$
 
 - General form: $\text{NewEstimate} = \text{OldEstimate} + \text{StepSize} \cdot [\text{Target} - \text{OldEstimate}]$
-- $[R_n - Q_n]$ is the *error* in the estimate; step size $\frac{1}{n}$ shrinks over time
+- $[R_n - Q_n]$ is the **error** in the estimate; step size $\frac{1}{n}$ shrinks over time
 
 **Pseudocode**: "A simple bandit algorithm" (p. 32) — full loop of action selection + incremental update
 
@@ -118,7 +118,7 @@ $$\sum_{n=1}^{\infty} \alpha_n = \infty \qquad \text{and} \qquad \sum_{n=1}^{\in
 - Effect: every action "disappoints" early on, forcing systematic exploration even under greedy selection
 - Limitation: only useful for stationary problems (the exploration boost is temporary)
 
-*Figure 2.3 — Optimistic greedy ($Q_0=5$, $\varepsilon=0$) vs. realistic $\varepsilon$-greedy ($Q_0=0$, $\varepsilon=0.1$):*
+**Figure 2.3** — Optimistic greedy ( $Q_0=5$, $\varepsilon=0$ ) vs. realistic $\varepsilon$-greedy ( $Q_0=0$, $\varepsilon=0.1$ ):
 
 ![Figure 2.3](figures/ch02/fig2.3-optimistic-initial-values.png)
 
@@ -140,7 +140,7 @@ $$A_t = \arg\max_a \left[ Q_t(a) + c\sqrt{\frac{\ln t}{N_t(a)}} \right]$$
 - The $\sqrt{}$ term is the **uncertainty bonus**: large when action $a$ is rarely tried, shrinks with more samples
 - $c$ controls exploration degree; $\ln t$ ensures all actions are tried but less frequently over time
 
-*Figure 2.4 — UCB ($c=2$) vs. $\varepsilon$-greedy ($\varepsilon=0.1$):*
+**Figure 2.4** — UCB ( $c=2$ ) vs. $\varepsilon$-greedy ( $\varepsilon=0.1$ ):
 
 ![Figure 2.4](figures/ch02/fig2.4-ucb-performance.png)
 
@@ -168,7 +168,7 @@ $$H_{t+1}(a) = H_t(a) - \alpha(R_t - \bar{R}_t)\pi_t(a) \qquad \text{(all other 
 - **Baseline** $\bar{R}_t$ (average of past rewards): rewards above baseline increase preference, below decrease it
 - Without baseline, performance degrades significantly
 
-*Figure 2.5 — % optimal action for gradient bandit: with/without baseline, $\alpha=0.1$ vs. $\alpha=0.4$:*
+**Figure 2.5** — % optimal action for gradient bandit: with/without baseline, $\alpha=0.1$ vs. $\alpha=0.4$:
 
 ![Figure 2.5](figures/ch02/fig2.5-gradient-bandit.png)
 
@@ -203,7 +203,7 @@ $$H_{t+1}(a) = H_t(a) - \alpha(R_t - \bar{R}_t)\pi_t(a) \qquad \text{(all other 
 - All methods have a tunable parameter; all have a "sweet spot" (inverted-U performance curves)
 - Parameter study compares all methods on a single plot: x-axis = parameter value (log scale), y-axis = average reward over first 1000 steps
 
-*Figure 2.6 — Parameter study across all chapter methods:*
+**Figure 2.6** — Parameter study across all chapter methods:
 
 ![Figure 2.6](figures/ch02/fig2.6-parameter-study.png)
 
