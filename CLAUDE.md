@@ -10,6 +10,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Comparable projects**: Seeing Theory (stats), TensorFlow Playground (neural nets).
 - **Remote**: https://github.com/jadenseangmany/interactive-rl.git
 
+## Textbook Reference
+
+The primary textbook is **Sutton & Barto, "Reinforcement Learning: An Introduction" (2nd ed., 2020)**. A local copy lives at `assets/RLbook2020.pdf` (git-ignored). Use `Read` with `pages` parameter to reference specific sections. Key chapter mapping:
+- Ch 1: Introduction (pp. 1–22)
+- Ch 2: Multi-armed Bandits (pp. 25–46)
+- Ch 3: Finite MDPs (pp. 47–72)
+- Ch 4: Dynamic Programming (pp. 73–92)
+- Ch 5: Monte Carlo Methods (pp. 93–118)
+- Ch 6: Temporal-Difference Learning (pp. 119–146)
+- Ch 7: n-step Bootstrapping (pp. 147–162)
+- Ch 8: Planning and Learning (pp. 163–186)
+
 ## Commands
 
 ```bash
