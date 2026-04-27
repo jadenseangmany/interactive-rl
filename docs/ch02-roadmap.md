@@ -54,7 +54,7 @@
 
 **Key results**:
 - Greedy improves faster initially but plateaus at $\sim 1.0$ (gets stuck)
-- $\varepsilon = 0.1$ explores fast, converges to $\sim 1.55$ but keeps exploring suboptimally
+- $\varepsilon = 0.1$ explores fast, converges to $\sim 1.4$ (best possible on this testbed is $\sim 1.54$) but keeps exploring suboptimally
 - $\varepsilon = 0.01$ explores slowly but eventually surpasses $\varepsilon = 0.1$
 - Advantage of $\varepsilon$-greedy grows with reward noise; shrinks with zero noise (but greedy still risks getting stuck)
 
@@ -65,7 +65,7 @@
 
 ---
 
-## 2.4 Incremental Implementation (pp. 30–31)
+## 2.4 Incremental Implementation (pp. 31–32)
 
 **Key ideas**:
 - Derive incremental update from sample average (avoid storing all rewards):
@@ -113,12 +113,12 @@ $$\sum_{n=1}^{\infty} \alpha_n = \infty \qquad \text{and} \qquad \sum_{n=1}^{\in
 ## 2.6 Optimistic Initial Values (pp. 34–36)
 
 **Key ideas**:
-- All methods so far are biased by initial $Q_0(a)$
-- **Optimistic initialization**: set $Q_0 = +5$ (much higher than the true values, which are drawn from $\mathcal{N}(0, 1)$ )
+- All methods so far are biased by initial $Q_1(a)$
+- **Optimistic initialization**: set $Q_1 = +5$ (much higher than the true values, which are drawn from $\mathcal{N}(0, 1)$ )
 - Effect: every action "disappoints" early on, forcing systematic exploration even under greedy selection
 - Limitation: only useful for stationary problems (the exploration boost is temporary)
 
-**Figure 2.3** — Optimistic greedy ( $Q_0=5$, $\varepsilon=0$ ) vs. realistic $\varepsilon$-greedy ( $Q_0=0$, $\varepsilon=0.1$ ):
+**Figure 2.3** — Optimistic greedy ( $Q_1=5$, $\varepsilon=0$ ) vs. realistic $\varepsilon$-greedy ( $Q_1=0$, $\varepsilon=0.1$ ):
 
 ![Figure 2.3](figures/ch02/fig2.3-optimistic-initial-values.png)
 
@@ -171,6 +171,8 @@ $$H_{t+1}(a) = H_t(a) - \alpha(R_t - \bar{R}_t)\pi_t(a) \qquad \text{(all other 
 **Figure 2.5** — % optimal action for gradient bandit: with/without baseline, $\alpha=0.1$ vs. $\alpha=0.4$:
 
 ![Figure 2.5](figures/ch02/fig2.5-gradient-bandit.png)
+
+> **Note**: this experiment uses a shifted testbed where $q_{\ast}(a) \sim \mathcal{N}(+4, 1)$ (not the standard mean-0 testbed). The +4 shift is what makes the baseline matter — with the baseline the algorithm auto-adapts to the shifted reward level, without it performance collapses.
 
 **Textbook note**: Section includes a proof (pp. 38–40) that this update is stochastic gradient ascent on $\mathbb{E}[R_t]$.
 
