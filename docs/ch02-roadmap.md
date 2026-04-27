@@ -114,7 +114,7 @@ $$\sum_{n=1}^{\infty} \alpha_n = \infty \qquad \text{and} \qquad \sum_{n=1}^{\in
 
 **Key ideas**:
 - All methods so far are biased by initial $Q_0(a)$
-- **Optimistic initialization**: set $Q_0 = +5$ (much higher than true values $\sim \mathcal{N}(0,1)$)
+- **Optimistic initialization**: set $Q_0 = +5$ (much higher than the true values, which are drawn from $\mathcal{N}(0, 1)$ )
 - Effect: every action "disappoints" early on, forcing systematic exploration even under greedy selection
 - Limitation: only useful for stationary problems (the exploration boost is temporary)
 
@@ -220,12 +220,30 @@ $$H_{t+1}(a) = H_t(a) - \alpha(R_t - \bar{R}_t)\pi_t(a) \qquad \text{(all other 
 
 ## Key Equations Reference
 
-| Eq. | Name | Formula |
-|-----|------|---------|
-| 2.1 | Sample average | $Q_t(a) = \frac{\sum_{i=1}^{t-1} R_i \cdot \mathbb{1}_{A_i=a}}{\sum_{i=1}^{t-1} \mathbb{1}_{A_i=a}}$ |
-| 2.3 | Incremental update | $Q_{n+1} = Q_n + \frac{1}{n}[R_n - Q_n]$ |
-| 2.5 | Constant step-size | $Q_{n+1} = Q_n + \alpha[R_n - Q_n]$ |
-| 2.6 | Recency-weighted avg | $Q_{n+1} = (1-\alpha)^n Q_1 + \sum_{i=1}^{n} \alpha(1-\alpha)^{n-i} R_i$ |
-| 2.7 | Convergence conditions | $\sum \alpha_n = \infty, \quad \sum \alpha_n^2 < \infty$ |
-| 2.10 | UCB | $A_t = \arg\max_a \left[ Q_t(a) + c\sqrt{\frac{\ln t}{N_t(a)}} \right]$ |
-| 2.12 | Gradient update | $H_{t+1}(A_t) = H_t(A_t) + \alpha(R_t - \bar{R}_t)(1 - \pi_t(A_t))$ |
+**Eq. 2.1 — Sample average**:
+
+$$Q_t(a) = \frac{\sum_{i=1}^{t-1} R_i \cdot \mathbf{1}_{A_i = a}}{\sum_{i=1}^{t-1} \mathbf{1}_{A_i = a}}$$
+
+**Eq. 2.3 — Incremental update**:
+
+$$Q_{n+1} = Q_n + \frac{1}{n}\big[R_n - Q_n\big]$$
+
+**Eq. 2.5 — Constant step-size**:
+
+$$Q_{n+1} = Q_n + \alpha\big[R_n - Q_n\big]$$
+
+**Eq. 2.6 — Recency-weighted average**:
+
+$$Q_{n+1} = (1 - \alpha)^n Q_1 + \sum_{i=1}^{n} \alpha(1 - \alpha)^{n-i} R_i$$
+
+**Eq. 2.7 — Convergence conditions**:
+
+$$\sum_{n=1}^{\infty} \alpha_n = \infty \qquad \text{and} \qquad \sum_{n=1}^{\infty} \alpha_n^2 < \infty$$
+
+**Eq. 2.10 — UCB**:
+
+$$A_t = \arg\max_a \left[ Q_t(a) + c\sqrt{\frac{\ln t}{N_t(a)}} \right]$$
+
+**Eq. 2.12 — Gradient update**:
+
+$$H_{t+1}(A_t) = H_t(A_t) + \alpha(R_t - \bar{R}_t)(1 - \pi_t(A_t))$$
