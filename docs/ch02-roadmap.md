@@ -2,7 +2,7 @@
 
 **Source**: Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed.), pp. 25–42
 
-**Chapter theme**: The simplest RL setting — no state, no transitions. Just repeated action selection and reward. Isolates the **exploration vs. exploitation** tradeoff.
+**Chapter theme**: **exploration vs. exploitation** tradeoff.
 
 ---
 
